@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire and Kin — Live Fire Culinary Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0d0c;
+    --charcoal: #1a1917;
+    --ash: #2a2825;
+    --steel: #4a4845;
+    --copper: #b87333;
+    --copper-light: #d4956a;
+    --copper-bright: #e8a87c;
+    --gold: #c9a96e;
+    --cream: #f5f0e8;
+    --smoke: #6b6560;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* SVG Noise Overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(14,13,12,0.95) 0%, transparent 100%);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: var(--copper);
+    text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--smoke);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--copper-light); }
+
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(rgba(14,13,12,0.6), rgba(14,13,12,0.9)), url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, var(--copper) 0%, var(--copper-bright) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.8;
+    margin: 2rem 0 3rem;
+    font-weight: 300;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    border: 1px solid var(--copper);
+    color: var(--copper-light);
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+
+  .btn:hover {
+    background: var(--copper);
+    color: var(--black);
+    transform: translateY(-2px);
+  }
+
+  /* Layout Sections */
+  section { padding: 8rem 2rem; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.6em; color: var(--copper); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: 2rem; }
+  .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--copper-light); }
+  .section-body { font-size: 1.2rem; line-height: 1.9; color: #a19a96; max-width: 65ch; margin-bottom: 1.5rem; font-weight: 300; }
+
+  /* Grid Layouts */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  
+  .visual-box {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format&fit=crop') center/cover;
+    border: 1px solid rgba(184,115,51,0.2);
+    display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center;
+  }
+
+  .visual-box blockquote { font-size: 1.8rem; font-style: italic; color: var(--cream); font-weight: 300; line-height: 1.4; }
+
+  /* Offerings Card Grid */
+  .bg-dark { background: var(--charcoal); max-width: 100%; }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .card { padding: 3rem 2rem; background: var(--black); border: 1px solid rgba(184,115,51,0.1); transition: all 0.3s ease; }
+  .card:hover { border-color: var(--copper); transform: translateY(-4px); }
+  .card-num { font-family: 'Cinzel', serif; font-size: 2.5rem; color: rgba(184,115,51,0.2); display: block; margin-bottom: 1rem; font-weight: 900; }
+  .card-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--copper-light); margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .card-body { font-size: 1rem; line-height: 1.7; color: var(--smoke); margin-bottom: 1.5rem; }
+  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid rgba(184,115,51,0.3); font-family: 'Cormorant SC', serif; font-size: 0.65rem; color: var(--copper); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* Events Table Row */
+  .event-row { display: grid; grid-template-columns: 150px 1fr auto; padding: 2rem 0; border-bottom: 1px solid rgba(184,115,51,0.1); align-items: center; }
+  .event-date { font-family: 'Cinzel', serif; color: var(--copper); font-size: 0.8rem; letter-spacing: 0.15em; }
+  .event-name { font-family: 'Cinzel', serif; font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .event-desc { color: var(--smoke); font-style: italic; }
+
+  /* Chef & Stats */
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+  .stat-item { background: var(--black); border: 1px solid rgba(184,115,51,0.1); padding: 1.5rem; text-align: center; }
+  .stat-val { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--copper); font-weight: 700; }
+  .stat-lbl { font-family: 'Cormorant SC', serif; font-size: 0.65rem; color: var(--smoke); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* Contact & Footer */
+  .contact-section { text-align: center; max-width: 800px; margin: 0 auto; }
+  .contact-email { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3vw, 2rem); color: var(--copper-light); text-decoration: none; display: block; margin: 2rem 0; transition: color 0.3s; }
+  .contact-email:hover { color: var(--copper-bright); }
+  
+  footer { padding: 3rem; display: flex; justify-content: space-between; font-family: 'Cormorant SC', serif; font-size: 0.7rem; color: var(--steel); border-top: 1px solid rgba(184,115,51,0.1); letter-spacing: 0.15em; }
+
+  /* Scroll Reveal animation */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive Design */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .event-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Fire &amp; Kin</span>
+  <ul class="nav-links">
+    <li><a href="#about">Philosophy</a></li>
+    <li><a href="#offerings">Experiences</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#chef">The Chef</a></li>
+    <li><a href="#contact">Enquire</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home" style="max-width:100%;">
+  <span class="hero-eyebrow" id="heroEyebrow"></span>
+  <h1 class="hero-title" id="heroTitle"></h1>
+  <p class="hero-subtitle" id="heroSubtitle"></p>
+  <a href="#contact" class="btn"><span>Enquire About an Experience</span></a>
+</section>
+
+<section id="about" class="grid-2 reveal">
+  <div>
+    <span class="section-label">Our Philosophy</span>
+    <h2 class="section-title" id="aboutTitle"></h2>
+    <div id="aboutBody"></div>
+  </div>
+  <div class="visual-box">
+    <blockquote id="aboutQuote"></blockquote>
+  </div>
+</section>
+
+<div class="bg-dark" id="offerings">
+  <section>
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title">Experiences Built<br><em>Around the Flame</em></h2>
+    <div class="cards-grid" id="offeringsGrid"></div>
+  </section>
+</div>
+
+<section id="events" class="reveal">
+  <span class="section-label">On the Fire</span>
+  <h2 class="section-title">Upcoming<br><em>Events &amp; Appearances</em></h2>
+  <div id="eventsList"></div>
+</section>
+
+<div class="bg-dark" id="chef">
+  <section class="grid-2 reveal">
+    <div>
+      <span class="section-label">The Chef</span>
+      <h2 class="section-title" id="chefName" style="margin-bottom:0.25rem;"></h2>
+      <span id="chefRole" style="font-style:italic; color:var(--copper-light); display:block; margin-bottom:2rem;"></span>
+      <div id="chefBio"></div>
+    </div>
+    <div class="stats-grid" id="chefStats"></div>
+  </section>
+</div>
+
+<section id="contact" class="contact-section reveal">
+  <span class="section-label">Get in Touch</span>
+  <h2 class="section-title">Let's Talk<br><em>About Fire</em></h2>
+  <p class="section-body" style="margin: 0 auto;">Whether you're a venue, an estate, a vineyard, or someone who wants to gather around the flame — we'd love to hear from you.</p>
+  <a href="" class="contact-email" id="contactEmail"></a>
+  <a href="" class="btn" id="contactBtn"><span>Send an Enquiry</span></a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Fire and Kin</p>
+  <p>Suffolk / Essex — United Kingdom</p>
+</footer>
+
+<!-- 
+======================================================================
+  ✏️ THE EASY EDIT SECTION
+  Change any text inside the quotes below to instantly update your site!
+======================================================================
+-->
+<script>
+const SITE_CONTENT = {
+  // Hero Section
+  hero: {
+    eyebrow: "Live Fire Culinary Experiences",
+    title: "<span>Fire</span> &amp; <span>Kin</span>",
+    subtitle: "Where primitive technique meets the sacred act of breaking bread"
+  },
+
+  // About Section
+  about: {
+    title: "Fire is the<br><em>ultimate connector</em>",
+    paragraphs: [
+      "Fire and Kin is a live-fire culinary project rooted in the belief that the oldest form of cooking is also the most honest. We use primitive, skillful techniques — hanging, slow-roasting, open flames, and time — to create food that tells a story. Every element is intentional. Nothing is rushed.",
+      "But the Kin is our heartbeat. Breaking bread is a sacred act of hospitality. Around a fire, strangers become family. Whether we're teaching at our school on the Suffolk/Essex border or cooking at your event, we believe in creating moments that matter."
+    ],
+    quote: '"Fire doesn\'t just cook the food — it cooks the moment."'
+  },
+
+  // Offerings Section
+  offerings: [
+    { num: "01", title: "Experience Days", body: "Hands-on, full-day immersions into live-fire mastery. Learn the art of the asado, hanging roasts, and communal cooking with Chef Lewis.", tag: "From £195pp" },
+    { num: "02", title: "Private Events", body: "Bespoke live-fire catering for weddings, corporate gatherings, and private celebrations. We bring the fire, the flavour, and an experience your guests won't forget.", tag: "Enquire to Quote" },
+    { num: "03", title: "Venue Partnerships", body: "We partner with vineyards, farms, and destination venues to create signature experience days they sell to their own audiences.", tag: "Enquire to Discuss" }
+  ],
+
+  // Events Section
+  events: [
+    { date: "Summer 2026", name: "Fume Festival", desc: "Representing Jacks Meat Shack — live fire demonstrations alongside Petromax." },
+    { date: "Summer 2026", name: "State Fayre, Essex", desc: "Fume BBQ Stage — Filipino Lechon Belly cook. A homecoming to our roots." },
+    { date: "Sep 2026", name: "Isle of Man Festival", desc: "Festival appearance — details announced soon." },
+    { date: "Ongoing", name: "Art of Asado Experience Days", desc: "With Jacks Meat Shack — at his BBQ School and a Suffolk vineyard." }
+  ],
+
+  // Chef Section
+  chef: {
+    name: "Lewis Aleta",
+    role: "Owner, Chef &amp; Fire Master",
+    bio: [
+      "Lewis Aleta is the fire behind Fire and Kin — a live-fire chef whose cooking is shaped by heritage, instinct, and a deep respect for the flame. His Filipino roots run through everything he cooks, blended with years of learning from mentors across Europe and the Middle East.",
+      "He is a proud partner of Petromax UK, an ongoing relationship born from a shared belief in quality tools built specifically for the fire."
+    ],
+    stats: [
+      { val: "100%", lbl: "Local Sourcing" },
+      { val: "Live", lbl: "Fire Only" },
+      { val: "Suffolk", lbl: "Essex Based" },
+      { val: "UK", lbl: "Nationwide" }
+    ]
+  },
+
+  // Global Contact Info
+  email: "info@fireandkin.co.uk"
+};
+
+// ── CODE THAT AUTOMATICALLY BUILDS YOUR SITE ──
+document.getElementById('heroEyebrow').innerHTML = SITE_CONTENT.hero.eyebrow;
+document.getElementById('heroTitle').innerHTML = SITE_CONTENT.hero.title;
+document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
+document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
+document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
+document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">${o.tag}</span></div>`).join('');
+document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
+document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
+document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
+document.getElementById('chefBio').innerHTML = SITE_CONTENT.chef.bio.map(p => `<p class="section-body" style="font-size:1.05rem;">${p}</p>`).join('');
+document.getElementById('chefStats').innerHTML = SITE_CONTENT.chef.stats.map(s => `<div class="stat-item"><div class="stat-val">${s.val}</div><div class="stat-lbl">${s.lbl}</div></div>`).join('');
+document.getElementById('contactEmail').innerText = SITE_CONTENT.email;
+document.getElementById('contactEmail').href = `mailto:${SITE_CONTENT.email}`;
+document.getElementById('contactBtn').href = `mailto:${SITE_CONTENT.email}?subject=Enquiry from Fire and Kin Website`;
+
+// Navigation Style on Scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 80) {
+    nav.style.background = 'rgba(14,13,12,0.98)';
+    nav.style.borderBottom = '1px solid rgba(184,115,51,0.1)';
+  } else {
+    nav.style.background = 'linear-gradient(to bottom, rgba(14,13,12,0.95) 0%, transparent 100%)';
+    nav.style.borderBottom = 'none';
+  }
+});
+
+// Scroll Reveal Trigger
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
