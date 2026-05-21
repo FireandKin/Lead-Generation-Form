@@ -34,7 +34,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' result='noise'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000' opacity='0.05' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctav[...]
     opacity: 0.08;
     pointer-events: none;
     z-index: 1000;
@@ -149,8 +149,8 @@
 
   /* Standard Sections */
   section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
-  .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; color: var(--ember); text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
-  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 3.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; line-height: 1.1; }
+  .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; color: var(--ember); text-transform: uppercase; margin-bottom: 1.5rem; display: b[...]
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 3.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; line-heigh[...]
   .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; color: var(--smoke); text-transform: none; letter-spacing: 0; }
   .section-body { font-size: 1.1rem; line-height: 1.8; color: var(--smoke); max-width: 62ch; margin-bottom: 1.5rem; font-weight: 300; }
 
@@ -167,7 +167,7 @@
   .visual-box blockquote { font-size: clamp(1.3rem, 4vw, 1.9rem); font-style: italic; color: var(--cream); font-weight: 300; line-height: 1.4; opacity: 0.95; }
 
   /* Offerings Section */
-  .bg-dark-textured { background: linear-gradient(rgba(10,10,9,0.85), rgba(10,10,9,0.97)), url('image_offerings.jpg') center/cover; max-width: 100%; border-top: 1px solid var(--border-iron); border-bottom: 1px solid var(--border-iron); }
+  .bg-dark-textured { background: linear-gradient(rgba(10,10,9,0.85), rgba(10,10,9,0.97)), url('image_offerings.jpg') center/cover; max-width: 100%; border-top: 1px solid var(--border-iron); border-bo[...]
   .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
   
   .card { padding: 2.5rem 1.5rem; background: var(--bg-main); border: 1px solid var(--border-iron); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -175,7 +175,7 @@
   .card-num { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 900; color: var(--border-iron); display: block; margin-bottom: 1.5rem; }
   .card-title { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.05em; }
   .card-body { font-size: 0.95rem; line-height: 1.7; color: var(--smoke); margin-bottom: 2rem; }
-  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-iron); font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--ember); letter-spacing: 0.1em; text-transform: uppercase; }
+  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-iron); font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--ember); letter[...]
 
   /* Events Layout */
   .event-row { display: grid; grid-template-columns: 120px 1fr; padding: 2rem 0; border-bottom: 1px solid var(--border-iron); align-items: flex-start; gap: 1.5rem; }
@@ -193,10 +193,10 @@
 
   /* Contact & Footer */
   .contact-section { text-align: center; max-width: 800px; margin: 0 auto; }
-  .contact-email { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.1rem, 3vw, 2.2rem); color: var(--cream); text-decoration: none; display: block; margin: 2.5rem 0; transition: color 0.3s ease; word-break: break-all; }
+  .contact-email { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.1rem, 3vw, 2.2rem); color: var(--cream); text-decoration: none; display: block; margin: 2.5rem 0; transit[...]
   .contact-email:hover { color: var(--ember); }
   
-  footer { padding: 2.5rem 1.5rem; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--steel); border-top: 1px solid var(--border-iron); }
+  footer { padding: 2.5rem 1.5rem; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--steel); border-top: 1px solid[...]
 
   /* Scroll Reveal animation */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -261,7 +261,6 @@
 <section class="hero" id="home" style="max-width:100%;">
   <div class="hero-branding-wrapper">
     <img src="image_logo.png" alt="Fire & Kin Metallic Brand Mark" class="hero-logo-img" onerror="this.style.display='none'">
-    <span class="branding-tagline">Suffolk / Essex</span>
   </div>
   <span class="hero-eyebrow" id="heroEyebrow"></span>
   <h1 class="hero-title" id="heroTitle"></h1>
@@ -300,7 +299,7 @@
     <div>
       <span class="section-label">The Craft</span>
       <h2 class="section-title" id="chefName" style="margin-bottom:0.25rem;"></h2>
-      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--smoke); display:block; margin-bottom:1.5rem;"></span>
+      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--smoke); display:block; margin-bott[...]
       <div id="chefBio"></div>
       <div class="stats-grid" id="chefStats"></div>
     </div>
@@ -360,7 +359,7 @@ const SITE_CONTENT = {
     name: "Lewis",
     role: "Founder &amp; Live-Fire Chef",
     bio: [
-      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural traditions with contemporary innovation."
+      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural traditions with modern technique, emphasizing the primal connection between fire, food, and community."
     ],
     stats: [
       { val: "Fire", lbl: "Flavour" },
@@ -372,7 +371,7 @@ const SITE_CONTENT = {
 
   // Global Contact Info
   email: "info@fireandkin.co.uk",
-  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the flames."
+  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the flame that your guests will never forget."
 };
 
 // ── CODE THAT AUTOMATICALLY BUILDS YOUR SITE ──
@@ -382,7 +381,7 @@ document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
 document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
 document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
 document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
-document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p></div>`).join('');
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">Learn More</span></div>`).join('');
 document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
 document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
 document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
