@@ -34,7 +34,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' result='noise'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1000;
   }
@@ -59,6 +59,21 @@
     letter-spacing: 0.4em;
     color: var(--cream);
     text-transform: uppercase;
+  }
+
+  .nav-logo-img {
+    max-width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-right: 0;
+  }
+
+  .nav-logo-img.visible {
+    max-width: 50px;
+    height: auto;
+    opacity: 1;
+    margin-right: 1rem;
   }
 
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -149,7 +164,7 @@
   /* Standard Sections */
   section { padding: 9rem 2rem; max-width: 1200px; margin: 0 auto; }
   .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5em; color: var(--ember); text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
-  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; line-height: 1.05; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; line-height: 1; }
   .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; color: var(--smoke); text-transform: none; letter-spacing: 0; }
   .section-body { font-size: 1.25rem; line-height: 1.85; color: var(--smoke); max-width: 62ch; margin-bottom: 1.5rem; font-weight: 300; }
 
@@ -175,7 +190,7 @@
   .card-num { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 900; color: var(--border-iron); display: block; margin-bottom: 1.5rem; }
   .card-title { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.1em; }
   .card-body { font-size: 1.05rem; line-height: 1.75; color: var(--smoke); margin-bottom: 2rem; }
-  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-iron); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: var(--ember); letter-spacing: 0.15em; text-transform: uppercase; }
+  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-iron); font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: var(--ember); letter-spacing: 0.1em; }
 
   /* Events Layout */
   .event-row { display: grid; grid-template-columns: 160px 1fr; padding: 2.5rem 0; border-bottom: 1px solid var(--border-iron); align-items: center; }
@@ -185,7 +200,7 @@
 
   /* Chef Grid */
   .grid-chef { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; }
-  .chef-image { width: 100%; aspect-ratio: 1/1; /* Square portrait */ object-fit: cover; border: 1px solid var(--border-iron); filter: contrast(110%) grayscale(10%) brightness(90%); } /* Dark vignette already in image_chef.jpg description */
+  .chef-image { width: 100%; aspect-ratio: 1/1; /* Square portrait */ object-fit: cover; border: 1px solid var(--border-iron); filter: contrast(110%) grayscale(10%) brightness(90%); }
   .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
   .stat-item { background: var(--bg-main); border: 1px solid var(--border-iron); padding: 1.75rem; text-align: center; }
   .stat-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -193,10 +208,10 @@
 
   /* Contact & Footer */
   .contact-section { text-align: center; max-width: 800px; margin: 0 auto; }
-  .contact-email { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.3rem, 3vw, 2.2rem); color: var(--cream); text-decoration: none; display: block; margin: 2.5rem 0; transition: color 0.3s; text-transform: uppercase; letter-spacing: -0.01em; }
+  .contact-email { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.3rem, 3vw, 2.2rem); color: var(--cream); text-decoration: none; display: block; margin: 2.5rem 0; transition: color 0.3s ease; }
   .contact-email:hover { color: var(--ember); }
   
-  footer { padding: 3rem; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: var(--steel); border-top: 1px solid var(--border-iron); letter-spacing: 0.2em; text-transform: uppercase; }
+  footer { padding: 3rem; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: var(--steel); border-top: 1px solid var(--border-iron); }
 
   /* Scroll Reveal animation */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -219,7 +234,10 @@
 <body>
 
 <nav>
-  <span class="nav-logo">Fire &amp; Kin</span>
+  <span class="nav-logo">
+    <img src="image_logo.png" alt="Fire & Kin Metallic Brand Mark" class="nav-logo-img" onerror="this.style.display='none'">
+    Fire &amp; Kin
+  </span>
   <ul class="nav-links">
     <li><a href="#about">Philosophy</a></li>
     <li><a href="#offerings">Experiences</a></li>
@@ -271,7 +289,7 @@
     <div>
       <span class="section-label">The Craft</span>
       <h2 class="section-title" id="chefName" style="margin-bottom:0.25rem;"></h2>
-      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margin-bottom:2rem;"></span>
+      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margin-bottom:1rem;"></span>
       <div id="chefBio"></div>
       <div class="stats-grid" id="chefStats"></div>
     </div>
@@ -304,17 +322,17 @@ const SITE_CONTENT = {
   about: {
     title: "Fire is the<br><em>ultimate connector</em>",
     paragraphs: [
-      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using wood, smoke and instinct to draw out the absolute essence of locally sourced meat and seasonal produce.",
-      "But the flame is just the canvas—the *Kin* is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting immersive masterclasses or executing large-scale estate catering, we gather people together to feed the mind as much as the plate."
+      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using locally sourced ingredients and heritage breeds. Every experience is built on a foundation of rigorous technique—timing, temperature control, and a deep respect for the ingredients.",
+      "But the flame is just the canvas—the *Kin* is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting intimate masterclasses or large-scale estate events, our mission is simple: to reconnect people with fire, craft, and each other."
     ],
     quote: '"Fire doesn\'t just cook the food — it brings people together."'
   },
 
   // Offerings Section
   offerings: [
-    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hanging roasts, and traditional asado techniques and international flavours. Corporate variations available.", tag: "Enquire to discuss." },
-    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced produce, and a theatrical dining experience your guests will talk about for years.", tag: "Bespoke Quoting" },
-    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailored directly to your venue's brand and audience.", tag: "Enquire to Discuss" }
+    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hangi techniques, whole-animal butchery, and wood-fired bread baking." },
+    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced ingredients, and theatrical presentation to your venue." },
+    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailored to your brand and audience." }
   ],
 
   // Events Section
@@ -331,7 +349,7 @@ const SITE_CONTENT = {
     name: "Lewis",
     role: "Founder &amp; Live-Fire Chef",
     bio: [
-      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural fire traditions—fusing the communal theater of the South American asado with the primal craft of his Filipino roots, famously captured in his whole-animal and lechon cooks over open embers."
+      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural fire traditions—from Argentinian asado to Filipino open-hearth methods—with precise modern technique."
     ],
     stats: [
       { val: "Fire", lbl: "Flavour" },
@@ -343,7 +361,7 @@ const SITE_CONTENT = {
 
   // Global Contact Info
   email: "info@fireandkin.co.uk",
-  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the fire."
+  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the flame."
 };
 
 // ── CODE THAT AUTOMATICALLY BUILDS YOUR SITE ──
@@ -353,7 +371,7 @@ document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
 document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
 document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
 document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
-document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">${o.tag}</span></div>`).join('');
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p></div>`).join('');
 document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
 document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
 document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
@@ -367,12 +385,15 @@ document.getElementById('contactBtn').href = `mailto:${SITE_CONTENT.email}?subje
 // Navigation Style on Scroll
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
+  const navLogoImg = document.querySelector('.nav-logo-img');
   if (window.scrollY > 80) {
     nav.style.background = 'rgba(10,10,9,0.98)';
     nav.style.borderBottom = '1px solid var(--border-iron)';
+    navLogoImg.classList.add('visible');
   } else {
     nav.style.background = 'linear-gradient(to bottom, rgba(10,10,9,0.95) 0%, transparent 100%)';
     nav.style.borderBottom = 'none';
+    navLogoImg.classList.remove('visible');
   }
 });
 
