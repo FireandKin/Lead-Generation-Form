@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-main: #0a0a09;       /* Deep obsidian black */
-    --bg-dark: #121110;       /* Volcanic charcoal */
-    --border-iron: #262422;   /* Weathered iron */
-    --steel: #5e5a56;         /* Forged steel */
-    --ember: #d9531e;         /* Pure glowing ember */
-    --ember-dim: #9e360e;     /* Smoldering ember */
-    --cream: #f4f0ea;         /* Raw canvas/cream */
-    --smoke: #8c857e;         /* Heavy woodsmoke grey */
+    --bg-main: #0a0a09;
+    --bg-dark: #121110;
+    --border-iron: #262422;
+    --steel: #5e5a56;
+    --ember: #d9531e;
+    --ember-dim: #9e360e;
+    --cream: #f4f0ea;
+    --smoke: #8c857e;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,17 +29,16 @@
     overflow-x: hidden;
   }
 
-  /* SVG Subtle Ash Noise Overlay */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctav[...]
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000000'/%3E%3Crect width='256' height='256' fill='%23f4f0ea' opacity='0.02' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.15;
     pointer-events: none;
     z-index: 1000;
   }
 
-  /* Navigation */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -74,7 +73,6 @@
   }
   .nav-links a:hover { color: var(--cream); }
 
-  /* Hero Section */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -119,7 +117,6 @@
     max-width: 50ch;
   }
 
-  /* Button Design */
   .btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -142,63 +139,233 @@
     transform: translateY(-2px);
   }
 
-  /* Standard Sections */
   section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; width: 100%; }
-  .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5em; color: var(--ember); text-transform: uppercase; margin-bottom: 1.5rem; display: b[...]
-  .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4.5vw, 3.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; line-hei[...]
-  .section-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; color: var(--smoke); text-transform: none; letter-spacing: 0; }
-  .section-body { font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.85; color: var(--smoke); max-width: 62ch; margin-bottom: 1.5rem; font-weight: 300; }
+  .section-label { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.65rem; 
+    font-weight: 700; 
+    letter-spacing: 0.5em; 
+    color: var(--ember); 
+    text-transform: uppercase; 
+    margin-bottom: 1.5rem; 
+    display: block;
+  }
+  
+  .section-title { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(1.8rem, 4.5vw, 3.8rem); 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    letter-spacing: -0.01em; 
+    margin-bottom: 2.5rem; 
+    line-height: 1.1;
+  }
+  
+  .section-title em { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-style: italic; 
+    font-weight: 300; 
+    color: var(--smoke); 
+    text-transform: none; 
+    letter-spacing: 0;
+  }
+  
+  .section-body { 
+    font-size: clamp(1rem, 1.8vw, 1.25rem); 
+    line-height: 1.85; 
+    color: var(--smoke); 
+    max-width: 62ch; 
+    margin-bottom: 1.5rem; 
+    font-weight: 300;
+  }
 
-  /* Philosophy Grid */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
   
   .visual-box {
-    width: 100%; aspect-ratio: 4/3;
+    width: 100%; 
+    aspect-ratio: 4/3;
     background: linear-gradient(rgba(10,10,9,0.4), rgba(10,10,9,0.7)), url('image_philosophy_fish.jpg') center/cover;
     border: 1px solid var(--border-iron);
-    display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 2rem; 
+    text-align: center;
   }
 
-  .visual-box blockquote { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-style: italic; color: var(--cream); font-weight: 300; line-height: 1.4; opacity: 0.95; }
+  .visual-box blockquote { 
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem); 
+    font-style: italic; 
+    color: var(--cream); 
+    font-weight: 300; 
+    line-height: 1.4; 
+    opacity: 0.95;
+  }
 
-  /* Offerings Section */
-  .bg-dark-textured { background: linear-gradient(rgba(10,10,9,0.85), rgba(10,10,9,0.97)), url('image_offerings.jpg') center/cover; max-width: 100%; border-top: 1px solid var(--border-iron); border-bo[...]
+  .bg-dark-textured { 
+    background: linear-gradient(rgba(10,10,9,0.85), rgba(10,10,9,0.97)), url('image_offerings.jpg') center/cover; 
+    max-width: 100%; 
+    border-top: 1px solid var(--border-iron); 
+    border-bottom: 1px solid var(--border-iron);
+  }
+  
   .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
   
-  .card { padding: 2rem; background: var(--bg-main); border: 1px solid var(--border-iron); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-  .card:hover { border-color: var(--steel); transform: translateY(-4px); }
-  .card-num { font-family: 'Montserrat', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; color: var(--border-iron); display: block; margin-bottom: 1rem; }
-  .card-title { font-family: 'Montserrat', sans-serif; font-size: clamp(0.9rem, 1.8vw, 1.1rem); font-weight: 700; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0[...]
-  .card-body { font-size: clamp(0.9rem, 1.5vw, 1.05rem); line-height: 1.75; color: var(--smoke); margin-bottom: 1.5rem; }
-  .card-tag { display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--border-iron); font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--ember); letter[...]
+  .card { 
+    padding: 2rem; 
+    background: var(--bg-main); 
+    border: 1px solid var(--border-iron); 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .card:hover { 
+    border-color: var(--steel); 
+    transform: translateY(-4px);
+  }
+  
+  .card-num { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(1.5rem, 3vw, 2rem); 
+    font-weight: 900; 
+    color: var(--border-iron); 
+    display: block; 
+    margin-bottom: 1rem;
+  }
+  
+  .card-title { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem); 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: var(--cream); 
+    margin-bottom: 1rem; 
+    letter-spacing: 0.05em;
+  }
+  
+  .card-body { 
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem); 
+    line-height: 1.75; 
+    color: var(--smoke); 
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-tag { 
+    display: inline-block; 
+    padding: 0.4rem 1rem; 
+    border: 1px solid var(--border-iron); 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.6rem; 
+    font-weight: 700; 
+    color: var(--ember); 
+    letter-spacing: 0.1em;
+  }
 
-  /* Events Layout */
-  .event-row { display: grid; grid-template-columns: 120px 1fr; padding: 2rem 0; border-bottom: 1px solid var(--border-iron); align-items: flex-start; gap: 2rem; }
-  .event-date { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--ember); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
-  .event-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.15rem); text-transform: uppercase; margin-bottom: 0.35rem; letter-spacing: 0.05em; }
-  .event-desc { color: var(--smoke); font-size: clamp(0.95rem, 1.6vw, 1.1rem); font-weight: 300; }
+  .event-row { 
+    display: grid; 
+    grid-template-columns: 120px 1fr; 
+    padding: 2rem 0; 
+    border-bottom: 1px solid var(--border-iron); 
+    align-items: flex-start; 
+    gap: 2rem;
+  }
+  
+  .event-date { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    color: var(--ember); 
+    font-size: 0.75rem; 
+    letter-spacing: 0.15em; 
+    text-transform: uppercase;
+  }
+  
+  .event-name { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    font-size: clamp(1rem, 1.8vw, 1.15rem); 
+    text-transform: uppercase; 
+    margin-bottom: 0.35rem; 
+    letter-spacing: 0.05em;
+  }
+  
+  .event-desc { 
+    color: var(--smoke); 
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem); 
+    font-weight: 300;
+  }
 
-  /* Chef Grid */
   .grid-chef { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
-  .chef-image { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--border-iron); filter: contrast(110%) grayscale(10%) brightness(90%); }
+  .chef-image { 
+    width: 100%; 
+    aspect-ratio: 1/1; 
+    object-fit: cover; 
+    border: 1px solid var(--border-iron); 
+    filter: contrast(110%) grayscale(10%) brightness(90%);
+  }
+  
   .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
-  .stat-item { background: var(--bg-main); border: 1px solid var(--border-iron); padding: 1.25rem; text-align: center; }
-  .stat-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; }
-  .stat-lbl { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--smoke); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.25rem; }
+  .stat-item { 
+    background: var(--bg-main); 
+    border: 1px solid var(--border-iron); 
+    padding: 1.25rem; 
+    text-align: center;
+  }
+  
+  .stat-val { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: clamp(1.2rem, 2vw, 1.6rem); 
+    color: var(--cream); 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+  }
+  
+  .stat-lbl { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.6rem; 
+    font-weight: 700; 
+    color: var(--smoke); 
+    letter-spacing: 0.2em; 
+    text-transform: uppercase; 
+    margin-top: 0.25rem;
+  }
 
-  /* Contact & Footer */
   .contact-section { text-align: center; max-width: 800px; margin: 0 auto; }
-  .contact-email { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.2rem, 2.5vw, 2.2rem); color: var(--cream); text-decoration: none; display: block; margin: 2rem 0; transit[...]
+  .contact-email { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: clamp(1.2rem, 2.5vw, 2.2rem); 
+    color: var(--cream); 
+    text-decoration: none; 
+    display: block; 
+    margin: 2rem 0; 
+    transition: color 0.3s ease;
+  }
   .contact-email:hover { color: var(--ember); }
   
-  footer { padding: 2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 700; color: var(--steel); border-top: 1px so[...]
-  .footer-logo { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; color: var(--cream); text-transform: uppercase; }
+  footer { 
+    padding: 2rem 1.5rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.6rem; 
+    font-weight: 700; 
+    color: var(--steel); 
+    border-top: 1px solid var(--border-iron);
+  }
+  .footer-logo { 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    letter-spacing: 0.3em; 
+    color: var(--cream); 
+    text-transform: uppercase;
+  }
 
-  /* Scroll Reveal animation */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* Responsive Adjustments */
+  .bg-dark { background: var(--bg-dark); }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -270,7 +437,7 @@
     <div>
       <span class="section-label">The Craft</span>
       <h2 class="section-title" id="chefName" style="margin-bottom:0.25rem;"></h2>
-      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margi[...]
+      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margin-bottom:1.5rem;"></span>
       <div id="chefBio"></div>
       <div class="stats-grid" id="chefStats"></div>
     </div>
@@ -295,31 +462,27 @@
 
 <script>
 const SITE_CONTENT = {
-  // Hero Section
   hero: {
     eyebrow: "Live Fire Specialists",
     title: "Fire <span>&amp;</span> Kin",
     subtitle: "Precision in the preparation, passion in the fire."
   },
 
-  // About Section
   about: {
     title: "Fire is the<br><em>ultimate connector</em>",
     paragraphs: [
-      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using [...]
-      "But the flame is just the canvas—the *Kin* is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting int[...]
+      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using hardwoods and traditional techniques to produce unmatchable flavor and theatre.",
+      "But the flame is just the canvas—the Kin is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting intimate dinners, large-scale estate celebrations, or immersive masterclasses, we believe food tastes better when it's shared with intention."
     ],
     quote: '"Fire doesn\'t just cook the food — it brings people together."'
   },
 
-  // Offerings Section
   offerings: [
-    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hangi[...]
-    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced [...]
-    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailor[...]
+    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hangi techniques, and live-fire plating." },
+    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced ingredients, and theatrical precision." },
+    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailored to your venue's unique character." }
   ],
 
-  // Events Section
   events: [
     { date: "June 2026", name: "The Art of Asado Masterclass", desc: "Hosted alongside Jack at the BBQ School — an intensive dive into whole-animal hanging roasts and open hearth cooking." },
     { date: "June 2026", name: "Fume Festival", desc: "Live-fire stage demonstrations in collaboration with Jacks Meat Shack and Petromax." },
@@ -328,12 +491,11 @@ const SITE_CONTENT = {
     { date: "August 2026", name: "Vineyard Feast Series", desc: "A premium outdoor dining experience pairing locally sourced heritage meats with regional wines." }
   ],
 
-  // Chef Section
   chef: {
     name: "Lewis",
     role: "Founder &amp; Live-Fire Chef",
     bio: [
-      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural tradi[...]
+      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural traditions—from Argentine asado to Filipino inihaw—with contemporary technique and unflinching attention to ingredient quality."
     ],
     stats: [
       { val: "Fire", lbl: "Flavour" },
@@ -343,20 +505,19 @@ const SITE_CONTENT = {
     ]
   },
 
-  // Global Contact Info
   email: "info@fireandkin.co.uk",
-  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around [...]
+  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the flame."
 };
 
-// ── CODE THAT AUTOMATICALLY BUILDS YOUR SITE ──
+// Build site content
 document.getElementById('heroEyebrow').innerHTML = SITE_CONTENT.hero.eyebrow;
 document.getElementById('heroTitle').innerHTML = SITE_CONTENT.hero.title;
 document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
 document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
 document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
 document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
-document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body"[...]
-document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="ev[...]
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p></div>`).join('');
+document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
 document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
 document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
 document.getElementById('chefBio').innerHTML = SITE_CONTENT.chef.bio.map(p => `<p class="section-body" style="font-size:clamp(0.95rem, 1.6vw, 1.05rem);">${p}</p>`).join('');
@@ -366,7 +527,7 @@ document.getElementById('contactEmail').innerText = SITE_CONTENT.email;
 document.getElementById('contactEmail').href = `mailto:${SITE_CONTENT.email}`;
 document.getElementById('contactBtn').href = `mailto:${SITE_CONTENT.email}?subject=Enquiry from Fire and Kin Website`;
 
-// Navigation Style on Scroll
+// Navigation scroll effect
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   if (window.scrollY > 80) {
@@ -378,7 +539,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Scroll Reveal Trigger
+// Scroll reveal animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
