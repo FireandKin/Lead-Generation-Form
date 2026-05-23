@@ -184,7 +184,7 @@
   .visual-box {
     width: 100%; 
     aspect-ratio: 4/3;
-    background: linear-gradient(rgba(10,10,9,0.4), rgba(10,10,9,0.7)), url('philosophy_image.jpg') center/cover;
+    background: linear-gradient(rgba(10,10,9,0.4), rgba(10,10,9,0.7)), url('image_philosophy_fish.jpg') center/cover;
     border: 1px solid var(--border-iron);
     display: flex; 
     align-items: center; 
@@ -484,7 +484,7 @@ const SITE_CONTENT = {
   ],
 
   events: [
-    { date: "June 2026", name: "The Art of Asado Masterclass", desc: "Hosted alongside Jacks Meat Shack — an intensive dive into whole-animal hanging roasts and open hearth cooking." },
+    { date: "June 2026", name: "The Art of Asado Masterclass", desc: "Hosted alongside Jack at the BBQ School — an intensive dive into whole-animal hanging roasts and open hearth cooking." },
     { date: "June 2026", name: "Fume Festival", desc: "Live-fire stage demonstrations in collaboration with Jacks Meat Shack and Petromax." },
     { date: "June 2026", name: "State Fayre BBQ Demo", desc: "Live-fire stage demonstrations featuring traditional Filipino food!" },
     { date: "July 2026", name: "The Art of Asado", desc: "Immersive Asado experience at Jacks Meat Shack BBQ School on the Essex/Suffolk border - tickets still available." },
@@ -495,7 +495,7 @@ const SITE_CONTENT = {
     name: "Lewis",
     role: "Founder &amp; Live-Fire Chef",
     bio: [
-      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural tradions with contemporary technique, and every plate tells a story of fire, time, and intention."
+      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural traditions with contemporary technique, and every plate tells a story of fire, time, and intention."
     ],
     stats: [
       { val: "Fire", lbl: "Flavour" },
@@ -516,7 +516,7 @@ document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
 document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
 document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
 document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
-document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">Learn More</span></div>`).join('');
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">Learn More</span></div>`).join('');
 document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
 document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
 document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
