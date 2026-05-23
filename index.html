@@ -33,7 +33,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctav[...]
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' result='noise'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%230a0a09'/%3E%3Crect width='256' height='256' fill='%23ffffff' opacity='0.1' filter='url(%23noise)'/%3E%3C/svg%3E");
     opacity: 0.15;
     pointer-events: none;
     z-index: 1000;
@@ -184,7 +184,7 @@
   .visual-box {
     width: 100%; 
     aspect-ratio: 4/3;
-    background: linear-gradient(rgba(10,10,9,0.4), rgba(10,10,9,0.7)), url('Philosophy_image_use.jpg') center/cover;
+    background: linear-gradient(rgba(10,10,9,0.4), rgba(10,10,9,0.7)), url('philosophy_image.jpg') center/cover;
     border: 1px solid var(--border-iron);
     display: flex; 
     align-items: center; 
@@ -437,7 +437,7 @@
     <div>
       <span class="section-label">The Craft</span>
       <h2 class="section-title" id="chefName" style="margin-bottom:0.25rem;"></h2>
-      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margi[...]
+      <span id="chefRole" style="font-family:'Montserrat', sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke); display:block; margin-bottom:1.5rem;"></span>
       <div id="chefBio"></div>
       <div class="stats-grid" id="chefStats"></div>
     </div>
@@ -471,20 +471,20 @@ const SITE_CONTENT = {
   about: {
     title: "Fire is the<br><em>ultimate connector</em>",
     paragraphs: [
-      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using [...]
-      "But the flame is just the canvas—the Kin is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting intim[...]
+      "Fire and Kin is a live-fire culinary project born of a dream rooted in culinary history and primal instinct. We create food alongside our setting and custom-built fire cooking equipment, using techniques passed down through generations and refined through lived experience.",
+      "But the flame is just the canvas—the Kin is our heartbeat. Breaking bread around an open fire is an intentional act of hospitality that cuts through modern noise. Whether we are hosting intimate dinners, designing bespoke culinary events, or teaching masterclasses, every experience centers on connection, precision, and the ancient magic of cooking over flame."
     ],
     quote: '"Fire doesn\'t just cook the food — it brings people together."'
   },
 
   offerings: [
-    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hangi[...]
-    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced [...]
-    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailor[...]
+    { num: "01", title: "Masterclasses & Experience Days", body: "Immersive, full-day culinary experiences for individuals and private groups. Step up to the fire and master temperature control, hanging meats, wood selection, and the intuitive craft of live-fire cooking." },
+    { num: "02", title: "Private & Estate Events", body: "Bespoke, high-end live-fire catering for corporate gatherings, and private celebrations. We bring our signature fire setups, the best sourced ingredients, and our culinary expertise to your venue." },
+    { num: "03", title: "Venue & Vineyard Partnerships", body: "Collaborations with premium vineyards, destination farms, and country estates. We curate exclusive, ticketed live-fire feast days tailored to your brand and audience." }
   ],
 
   events: [
-    { date: "June 2026", name: "The Art of Asado Masterclass", desc: "Hosted alongside Jack at the BBQ School — an intensive dive into whole-animal hanging roasts and open hearth cooking." },
+    { date: "June 2026", name: "The Art of Asado Masterclass", desc: "Hosted alongside Jacks Meat Shack — an intensive dive into whole-animal hanging roasts and open hearth cooking." },
     { date: "June 2026", name: "Fume Festival", desc: "Live-fire stage demonstrations in collaboration with Jacks Meat Shack and Petromax." },
     { date: "June 2026", name: "State Fayre BBQ Demo", desc: "Live-fire stage demonstrations featuring traditional Filipino food!" },
     { date: "July 2026", name: "The Art of Asado", desc: "Immersive Asado experience at Jacks Meat Shack BBQ School on the Essex/Suffolk border - tickets still available." },
@@ -495,7 +495,7 @@ const SITE_CONTENT = {
     name: "Lewis",
     role: "Founder &amp; Live-Fire Chef",
     bio: [
-      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural tradi[...]
+      "Lewis is the driving force behind Fire and Kin. His culinary approach balances strict culinary principles with a deep respect for heritage and instinct. His cooking style bridges cultural tradions with contemporary technique, and every plate tells a story of fire, time, and intention."
     ],
     stats: [
       { val: "Fire", lbl: "Flavour" },
@@ -506,7 +506,7 @@ const SITE_CONTENT = {
   },
 
   email: "info@fireandkin.co.uk",
-  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around [...]
+  contactPitch: "Whether you manage a destination vineyard, an estate, or want to bring a spectacular live-fire theater to a private milestone event—let's collaborate and build an experience around the flame."
 };
 
 // Build site content
@@ -516,8 +516,8 @@ document.getElementById('heroSubtitle').innerHTML = SITE_CONTENT.hero.subtitle;
 document.getElementById('aboutTitle').innerHTML = SITE_CONTENT.about.title;
 document.getElementById('aboutQuote').innerHTML = SITE_CONTENT.about.quote;
 document.getElementById('aboutBody').innerHTML = SITE_CONTENT.about.paragraphs.map(p => `<p class="section-body">${p}</p>`).join('');
-document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body"[...]
-document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="ev[...]
+document.getElementById('offeringsGrid').innerHTML = SITE_CONTENT.offerings.map(o => `<div class="card"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body"><span class="card-num">${o.num}</span><h3 class="card-title">${o.title}</h3><p class="card-body">${o.body}</p><span class="card-tag">Learn More</span></div>`).join('');
+document.getElementById('eventsList').innerHTML = SITE_CONTENT.events.map(e => `<div class="event-row"><div class="event-date">${e.date}</div><div><div class="event-name">${e.name}</div><div class="event-desc">${e.desc}</div></div></div>`).join('');
 document.getElementById('chefName').innerHTML = SITE_CONTENT.chef.name;
 document.getElementById('chefRole').innerHTML = SITE_CONTENT.chef.role;
 document.getElementById('chefBio').innerHTML = SITE_CONTENT.chef.bio.map(p => `<p class="section-body" style="font-size:clamp(0.95rem, 1.6vw, 1.05rem);">${p}</p>`).join('');
